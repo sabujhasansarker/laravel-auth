@@ -19,7 +19,11 @@
                     <h4>Login | Custom Auth</h4>
                     <hr />
                     <form action="{{ route('auth.chack') }}" method="POST">
-                        @csrf
+                        @if(Session::get('fail'))
+                        <div class="alert alert-danger">
+                            {{ Session::get('fail') }}
+                        </div>
+                        @endif @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label"
                                 >Email address</label
