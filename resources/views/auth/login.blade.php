@@ -18,7 +18,8 @@
                 <div class="col-md-offset-4 col-md-4">
                     <h4>Login | Custom Auth</h4>
                     <hr />
-                    <form action="" method="POST">
+                    <form action="{{ route('auth.chack') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label"
                                 >Email address</label
@@ -26,9 +27,13 @@
                             <input
                                 type="email"
                                 class="form-control"
+                                name="email"
                                 id="exampleInputEmail1"
-                                aria-describedby="emailHelp"
+                                value="{{ old('email') }}"
                             />
+                            <span class="text-danger"
+                                >@error('email') {{ $message }} @enderror</span
+                            >
                         </div>
                         <div class="mb-3">
                             <label
@@ -38,9 +43,14 @@
                             >
                             <input
                                 type="password"
+                                name="password"
                                 class="form-control"
                                 id="exampleInputPassword1"
+                                value="{{ old('password') }}"
                             />
+                            <span class="text-danger"
+                                >@error("password"){{ $message }}@enderror</span
+                            >
                         </div>
                         <button
                             type="submit"

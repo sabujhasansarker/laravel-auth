@@ -37,4 +37,11 @@ class MainController extends Controller
              return back()->with('fail','Something went wrong, try again later');
          }
 }
+function chack(Request $request)
+{
+   $request->validate([
+       "email"=>"required|email",
+       "password"=>"required|min:5|max:12"
+   ]);
+}
 }
