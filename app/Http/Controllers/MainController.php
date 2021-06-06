@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 // model
 use App\Models\Admin;
+// hash password
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -26,7 +28,7 @@ class MainController extends Controller
          $admin = new Admin;
          $admin->name = $request->name;
          $admin->email = $request->email;
-         $admin->password = $request->password;
+         $admin->password = Hash::make($request->password);
          $save = $admin->save();
 
          if($save){
